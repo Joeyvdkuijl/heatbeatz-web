@@ -1,6 +1,7 @@
 <?php
-$hostname='localhost';
-$username='root';
-$password='';
-$database= "heatbeatz";
-?>
+return [
+    'hostname' => 'localhost',
+    'username' => 'root',
+    'password' => '',
+    'database' => 'heatbeatz'
+];
