@@ -18,12 +18,12 @@
       echo '<div class="album modaal">';
       echo '<img src="uploads/' . $row['image_url'] . '" alt="' . $row['image_url'] . '">';
       echo '<article>';
-      echo '<span class="bold">Title:</span><br>';
-      echo $row['image_title'] . '<br>';
-      echo '<span class="bold">Description:</span><br>';
+      echo '<span class="bold">Artist:</span><br>';
+      echo $row['image_tag'] . '<br>';
+      echo '<span class="bold">Song:</span><br>';
       echo $row['image_description'] . '<br>';
-      echo '<span class="bold">Tag:</span><br>';
-      echo $row['image_tag'];
+      echo '<span class="bold">Duration:</span><br>';
+      echo $row['image_title'];
       echo '</article>';
       echo '</div>';
     }

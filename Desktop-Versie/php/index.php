@@ -10,7 +10,7 @@ include("logIp.php");
   <meta charset="UTF-8">
   <meta name="description" content="HeatBeatz">
   <meta name="keywords" content="HeatBeatz">
-  <meta name="author" content="im van Osch, MD1A">
+  <meta name="author" content="Joey van der Kuijl, MD1A">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../css/flushbox-header.css">
   <link rel="stylesheet" href="../css/flushbox-main.css">
@@ -57,7 +57,25 @@ include("logIp.php");
             <i class="fas fa-window-close"></i>
         </label>
         <li>
-        <input type="checkbox" id="menu-schuiver" checked> <label class="haal-menu2" for="menu-schuiver">
+            <p style="    font-size: xx-large;
+    font-family: fantasy;
+    color: red;">Hottest drops!!</p>
+        </li>
+        <li>
+          <img src="../images/917FhHgNDHL._AC_SX522_.jpg" height="300px">
+            <p style="font-size: 200%;
+    font-family: sans-serif;
+    margin: 0;
+    font-weight: bolder;">Joji</p>
+    <p> IN TONGUES [EP]</p>
+        </li>
+        <li>
+          <img src="../images/4lehuzmxu53.jfif" height="300px">
+            <p style="font-size: 200%;
+    font-family: sans-serif;
+    margin: 0;
+    font-weight: bolder;">XXXTENTACTION</p>
+    <p> BAD VIBES FOR EVER</p>
         </li>
 </nav>
 

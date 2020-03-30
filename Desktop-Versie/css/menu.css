@@ -1,12 +1,13 @@
 .right{
-    background-color: chocolate;
-    color: cornsilk;
-    position: absolute;
+    background-color: white;
+    color: black;
+    position: fixed;
     top: 0;
-    left: 80vw;
-    width: 30vw;
+    left: 85vw;
+    width: 15vw;
     height: 100vh;
     transition: left .5s ease-in-out;
+    text-align: center;
 }
 
 
@@ -17,7 +18,7 @@
     margin: 0;
 }
 
-.right a.actieright{
+.right .actieright{
     color: cornsilk;
     font-size: 1.2em;
     padding: 1em 2em;
@@ -26,7 +27,7 @@
     border-bottom: 1px solid cornsilk;
 }
 
-.right nav a.actieRight{
+.right a.actieRight{
     padding: 1em 1.3em;
     border-left: .7em solid cornsilk;
     /* border-right: .7em solid cornsilk; */
@@ -50,4 +51,15 @@ label.haal-menu2{
 }
 .fa-align-justify:before {
     color: white;
+}
+.fa-window-close:before{
+    color: black;
+}
+
+.right .rips{
+    width: 10px;
+    height: 10px;
+}
+.right .hotdrop{
+    font-size: x-large;
 }

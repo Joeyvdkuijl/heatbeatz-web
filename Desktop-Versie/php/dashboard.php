@@ -1,7 +1,8 @@
 <?php
 require('db.php');
 include("auth.php");
-include("logIp.php"); ?>
+include("logIp.php");
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,35 +53,44 @@ include("logIp.php"); ?>
       </div><br><br>
 
       <?php
-      $user = $_SESSION['username'];
+      $username = $_SESSION['username'];
 
-      if ($user){
+      if ($username){
         if (isset($_POST['submit'])){
 
-          $oldpassword = md5($_POST['oldpassword']);
-		      $newpassword = md5($_POST['newpassword']);
-		      $repeatnewpassword = md5($_POST['repeatnewpassword']);
+          $oldpassword = filter_var($_REQUEST['oldpassword'], FILTER_SANITIZE_STRING);
+		      $newpassword = filter_var($_REQUEST['newpassword'], FILTER_SANITIZE_STRING);
+		      // $repeatpassword = filter_var($_REQUEST['repeatpassword'], FILTER_SANITIZE_STRING);
 
 
 
-          $connect =  dbConnect();
-          $query = "SELECT `password` FROM `users` WHERE username= :user";
-          $params = ['user'=>$user];
+          $connection =  dbConnect();
+          $query = "SELECT * FROM `users` WHERE `username`= :user and `password` = :oldpassword";
           $statement = $connection->prepare($query);
-         $result=$statement->execute($query);
+          $params = [
+            'oldpassword' =>  md5($oldpassword),
+            'user' => $username
+        ];
 
+        $statement->execute($params);
 
-          // if(!$queryget){
-          //   echo mysqli_error($connect);
-          // }
-          $row = $statement->fetch();
+        // Aantal rijen ophalen en opslaan in $rows
+       // $rows = $statement->rowCount();
+        $user = $statement->fetch();
 
-          $oldpassworddb = $row['password'];
+          $oldpassworddb = $user['password'];
 
 
           if ($oldpassword==$oldpassworddb){
             if ($newpassword !==""){
-              $result = mysqli_query("UPDATE `users` SET password='$newpassword' WHERE username='$user'");
+              // $result = mysqli_query("UPDATE `users` SET password='$newpassword' WHERE username='$user'");
+              $query = "UPDATE `users` SET `password` = :newpassword' WHERE `username`= :user";
+              $statement = $connection->prepare($query);
+              $params = [
+                'newpassword' =>  md5($newpassword),
+                'user' => $username
+            ];
+            $statement->execute($params);
               if (!$result){
 	               echo "There was an error in updating your password...";
 	                exit();
@@ -108,9 +118,8 @@ include("logIp.php"); ?>
       <form action="" method="post" name="changepassword">
       <input class="inhoudContent" type="password" name="oldpassword" placeholder="&#xF084; Old password" required style="font-family:'Montserrat', sans-serif, FontAwesome"/><br>
       <input class="inhoudContent" type="password" name="newpassword" placeholder="&#xF084; New password" required style="font-family:'Montserrat', sans-serif, FontAwesome"/><br>
-      <input class="inhoudContent" type="password" name="repeatnewpassword" placeholder="&#xF084; Repeat new password" required style="font-family:'Montserrat', sans-serif, FontAwesome"/><br>
+      <!-- <input class="inhoudContent" type="password" name="repeatpassword" placeholder="&#xF084; Repeat new password" required style="font-family:'Montserrat', sans-serif, FontAwesome"/><br> -->
       <input class="inhoudContent" name="submit" type="submit" value="Change password"/>
-
       </form>
 
 

@@ -46,6 +46,11 @@ main {
   cursor: pointer;
   color: white;
 }
+.fa-trash:before{
+  color: white;
+  font-size: x-large;
+  margin: 135px;
+}
 .goUp {
   display: none;
   width: 40px;
@@ -266,6 +271,7 @@ input[type="file"] {
   padding: 6px 22px;
   cursor: pointer;
   border-radius: 5px;
+  color: wheat;
 }
 .modaal article {
   font-size: 18px;
@@ -279,6 +285,7 @@ input[type="file"] {
 }
 .uploadText {
   font-size: 25px;
+  color: white;
 }
 .imageTitle, .imageTag, .imageDesc {
   padding: 6px 14px;

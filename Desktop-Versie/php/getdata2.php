@@ -11,9 +11,9 @@
     echo '<label for="fileToUpload" class="custom-file-upload">';
     echo '<i class="fa fa-cloud-upload" style="font-family: sans-serif, FontAwesome"></i> Choose picture</label>';
     echo '<input type="file" name="myfile" id="fileToUpload"><br>';
-    echo '<input type="text"  name="image_title" placeholder="Title"><br>';
+    echo '<input type="text"  name="image_tag" placeholder="Title"><br>';
     echo '<input type="text"  name="image_description" placeholder="Description"><br>';
-    echo '<input type="text"  name="image_tag" placeholder="Tag"><br>';
+    echo '<input type="text"  name="image_title" placeholder="Tag"><br>';
     echo '<input type="submit" name="submit" value="Flush">';
     echo '</form>';
     echo '</div>';
@@ -25,12 +25,14 @@
           echo '<div class="album modaal">';
           echo '<img src="uploads/' . $row['image_url'] . '" alt="' . $row['image_url'] . '">';
           echo '<article>';
-          echo '<span class="bold">Title:</span><br>';
-          echo $row['image_title'] . '<br>';
-          echo '<span class="bold">Description:</span><br>';
+          echo '<span class="bold">Artist:</span><br>';
+          echo $row['image_tag'] . '<br>';
+          echo '<span class="bold">Album:</span><br>';
           echo $row['image_description'] . '<br>';
-          echo '<span class="bold">Tag:</span><br>';
-          echo $row['image_tag'];
+          echo '<span class="bold">Duration:</span><br>';
+          echo $row['image_title'];
+          echo '<br>';
+          echo '<a href="delete.php?id=' . $row['image_id'] . '"><i class="fas fa-trash left"></i></a>';
           echo '</article>';
           echo '</div>';
       }
@@ -41,10 +43,10 @@
       echo '<label for="fileToUpload" class="custom-file-upload">';
       echo '<i class="fa fa-cloud-upload" style="font-family: sans-serif, FontAwesome"></i> Choose picture</label><br>';
       echo '<input type="file" name="myfile" id="fileToUpload"><br>';
-      echo '<input type="text"  name="image_title" placeholder="Title" class="imageTitle"><br>';
-      echo '<input type="text"  name="image_description" placeholder="Description" class="imageDesc"><br>';
-      echo '<input type="text"  name="image_tag" placeholder="Tag" class="imageTag"><br>';
-      echo '<input type="submit" name="submit" value="Flush" class="imageSubmit">';
+      echo '<input type="text"  name="image_tag" placeholder="Eminem" class="imageTag"><br>';
+      echo '<input type="text"  name="image_description" placeholder="Earth Song" class="imageDesc"><br>';
+      echo '<input type="text"  name="image_title" placeholder="2:30" class="imageTitle"><br>';
+      echo '<input type="submit" name="submit" value="HEAT" class="imageSubmit">';
       echo '</form>';
       echo '</div>';
   }
