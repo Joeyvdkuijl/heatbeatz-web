@@ -11,10 +11,10 @@
     echo '<label for="fileToUpload" class="custom-file-upload">';
     echo '<i class="fa fa-cloud-upload" style="font-family: sans-serif, FontAwesome"></i> Choose picture</label>';
     echo '<input type="file" name="myfile" id="fileToUpload"><br>';
-    echo '<input type="text"  name="image_tag" placeholder="Title"><br>';
-    echo '<input type="text"  name="image_description" placeholder="Description"><br>';
-    echo '<input type="text"  name="image_title" placeholder="Tag"><br>';
-    echo '<input type="submit" name="submit" value="Flush">';
+    echo '<input type="text"  name="image_tag" placeholder="Eminem"><br>';
+    echo '<input type="text"  name="image_description" placeholder="Earth Song"><br>';
+    echo '<input type="text"  name="image_title" placeholder="2:30"><br>';
+    echo '<input type="submit" name="submit" value="HEAT">';
     echo '</form>';
     echo '</div>';
   } else {
@@ -27,7 +27,7 @@
           echo '<article>';
           echo '<span class="bold">Artist:</span><br>';
           echo $row['image_tag'] . '<br>';
-          echo '<span class="bold">Album:</span><br>';
+          echo '<span class="bold">Song:</span><br>';
           echo $row['image_description'] . '<br>';
           echo '<span class="bold">Duration:</span><br>';
           echo $row['image_title'];

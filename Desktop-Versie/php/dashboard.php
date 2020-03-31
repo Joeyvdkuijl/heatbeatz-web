@@ -2,33 +2,38 @@
 require('db.php');
 include("auth.php");
 include("logIp.php");
- ?>
+?>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>HeatBeatz | Dashboard</title>
-<link rel="stylesheet" href="../css/flushbox_dashboard.css" />
-<link rel="stylesheet" href="../css/flushbox-header.css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  <meta charset="utf-8">
+  <title>HeatBeatz | Dashboard</title>
+  <link rel="stylesheet" href="../css/flushbox_dashboard.css" />
+  <link rel="stylesheet" href="../css/flushbox-header.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128060008-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128060008-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-128060008-1');
-</script>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-128060008-1');
+  </script>
 
 </head>
+
 <body>
   <header>
-  <a href="index.php" class="flushbox"><img src="../images/logo.png" height="200px" width="250px"></a><br>
+    <a href="index.php" class="flushbox"><img src="../images/logo.png" height="200px" width="250px"></a><br>
     <nav>
       <ul>
         <li><a href="index.php" class="hvr-bounce-to-bottom">Homepage</a></li>
@@ -47,20 +52,20 @@ include("logIp.php");
         <section class="pictureContent">Picture</section>
         <img src="../images/profilepicture.png" alt="Profile Stock Picure" class="stockImage"><br>
         <label for="file-upload" class="custom-file-upload">
-          <i class="fa fa-cloud-upload" style="font-family:'Montserrat', sans-serif, FontAwesome"></i>  Change picture
+          <i class="fa fa-cloud-upload" style="font-family:'Montserrat', sans-serif, FontAwesome"></i> Change picture
         </label>
-          <input id="file-upload" type="file" />
+        <input id="file-upload" type="file" />
       </div><br><br>
 
       <?php
       $username = $_SESSION['username'];
 
-      if ($username){
-        if (isset($_POST['submit'])){
+      if ($username) {
+        if (isset($_POST['submit'])) {
 
           $oldpassword = filter_var($_REQUEST['oldpassword'], FILTER_SANITIZE_STRING);
-		      $newpassword = filter_var($_REQUEST['newpassword'], FILTER_SANITIZE_STRING);
-		      // $repeatpassword = filter_var($_REQUEST['repeatpassword'], FILTER_SANITIZE_STRING);
+          $newpassword = filter_var($_REQUEST['newpassword'], FILTER_SANITIZE_STRING);
+          // $repeatpassword = filter_var($_REQUEST['repeatpassword'], FILTER_SANITIZE_STRING);
 
 
 
@@ -70,45 +75,50 @@ include("logIp.php");
           $params = [
             'oldpassword' =>  md5($oldpassword),
             'user' => $username
-        ];
+          ];
 
-        $statement->execute($params);
+          $statement->execute($params);
 
-        // Aantal rijen ophalen en opslaan in $rows
-       // $rows = $statement->rowCount();
-        $user = $statement->fetch();
+          // Aantal rijen ophalen en opslaan in $rows
+          $rows = $statement->rowCount();
+          if ($rows == 1) {
 
-          $oldpassworddb = $user['password'];
+            $user = $statement->fetch();
+
+            $oldpassword_hashed = md5($oldpassword);
+            $oldpassworddb = $user['password'];
 
 
-          if ($oldpassword==$oldpassworddb){
-            if ($newpassword !==""){
-              // $result = mysqli_query("UPDATE `users` SET password='$newpassword' WHERE username='$user'");
-              $query = "UPDATE `users` SET `password` = :newpassword' WHERE `username`= :user";
-              $statement = $connection->prepare($query);
-              $params = [
-                'newpassword' =>  md5($newpassword),
-                'user' => $username
-            ];
-            $statement->execute($params);
-              if (!$result){
-	               echo "There was an error in updating your password...";
-	                exit();
+
+
+            if ($oldpassword_hashed == $oldpassworddb) {
+              if ($newpassword !== "") {
+                // $result = mysqli_query("UPDATE `users` SET password='$newpassword' WHERE username='$user'");
+                $query = "UPDATE `users` SET `password` = :newpassword WHERE `username`= :user";
+                $statement = $connection->prepare($query);
+                $params = [
+                  'newpassword' =>  md5($newpassword),
+                  'user' => $username
+                ];
+                $statement->execute($params);
+                if (!$query) {
+                  echo "There was an error in updating your password...";
+                  exit();
                 }
 
                 session_destroy();
                 die("Your password has been changed.&lt;a href='index.php'&gt;Return&lt;/a&gt; to the main page");
-
               }
-            // if ($newpassword==$repeatnewpassword){
-            //   $querychange = mysqli_query("UPDATE `users` SET password='$newpassword' WHERE username='$user'");
-            //   session_destroy();
-            //   die("Your pass has been changed.<a href='login.php'>Return</a> to the main page to login again");
-            // }
+              // if ($newpassword==$repeatnewpassword){
+              //   $querychange = mysqli_query("UPDATE `users` SET password='$newpassword' WHERE username='$user'");
+              //   session_destroy();
+              //   die("Your pass has been changed.<a href='login.php'>Return</a> to the main page to login again");
+              // }
+            }
           }
         }
       }
-       ?>
+      ?>
 
       <section class="inhoudContent">Change username:</section>
       <input type="text" name="wachtwoordVeranderen" value=<?php echo $_SESSION['username']; ?>>
@@ -116,10 +126,10 @@ include("logIp.php");
       <input type="text" name="wachtwoordVeranderen" value=<?php echo $_SESSION['email']; ?>>
       <section class="inhoudContent">Change password:</section>
       <form action="" method="post" name="changepassword">
-      <input class="inhoudContent" type="password" name="oldpassword" placeholder="&#xF084; Old password" required style="font-family:'Montserrat', sans-serif, FontAwesome"/><br>
-      <input class="inhoudContent" type="password" name="newpassword" placeholder="&#xF084; New password" required style="font-family:'Montserrat', sans-serif, FontAwesome"/><br>
-      <!-- <input class="inhoudContent" type="password" name="repeatpassword" placeholder="&#xF084; Repeat new password" required style="font-family:'Montserrat', sans-serif, FontAwesome"/><br> -->
-      <input class="inhoudContent" name="submit" type="submit" value="Change password"/>
+        <input class="inhoudContent" type="password" name="oldpassword" placeholder="&#xF084; Old password" required style="font-family:'Montserrat', sans-serif, FontAwesome" /><br>
+        <input class="inhoudContent" type="password" name="newpassword" placeholder="&#xF084; New password" required style="font-family:'Montserrat', sans-serif, FontAwesome" /><br>
+        <!-- <input class="inhoudContent" type="password" name="repeatpassword" placeholder="&#xF084; Repeat new password" required style="font-family:'Montserrat', sans-serif, FontAwesome"/><br> -->
+        <input class="inhoudContent" name="submit" type="submit" value="Change password" />
       </form>
 
 
@@ -127,11 +137,12 @@ include("logIp.php");
   </main>
   <script src="//code.jquery.com/jquery-3.3.1.js"></script>
   <script type="text/javascript">
-    $(document).ready(function(){
-      $('.menu-toggle').click(function(){
+    $(document).ready(function() {
+      $('.menu-toggle').click(function() {
         $('nav').toggleClass('active')
       })
     })
   </script>
 </body>
+
 </html>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>FlushBox Registration</title>
+    <title>HeatBeatz Registration</title>
     <link rel="stylesheet" href="../css/registerlogin.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -40,7 +40,7 @@
 
         if ($result) {
             echo "<div class='form'>
-						<h3>You are registered successfully. welcome to FlushBox </h3>
+						<h3>You are registered successfully. welcome to HeatBeatz </h3>
 						<br/> <p>Click here to</p> <a href='login.php'>Login</a></div>";
         }
     } else {
