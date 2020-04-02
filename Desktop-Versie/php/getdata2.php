@@ -38,7 +38,7 @@
       }
       echo '<button class="modaalButton addImage hvr-pulse-grow" style="font-size: 35px; font-family: sans-serif, FontAwesome">&#xF030;</button>';
       echo '<div class="modaal">';
-      echo '<p class="uploadText">Upload a photo</p>';
+      echo '<p class="uploadText">Upload a Song</p>';
       echo '<form action="fileUpload.php" method="post" enctype="multipart/form-data">';
       echo '<label for="fileToUpload" class="custom-file-upload">';
       echo '<i class="fa fa-cloud-upload" style="font-family: sans-serif, FontAwesome"></i> Choose picture</label><br>';

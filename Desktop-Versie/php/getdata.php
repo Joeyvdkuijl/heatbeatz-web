@@ -2,7 +2,7 @@
   include "dbVars.php";
   $q     = $_GET['q'];
   $q     = filter_var($q, FILTER_SANITIZE_STRING);
-  $con   = mysqli_connect("localhost", "root", "", "heatbeatz");
+  $con   = mysqli_connect("127.0.0.1", "c5509HeatBeatz", "fjpyqzim2002", "c5509HeatBeatz");
   if (!$con) {
       die('Could not connect: ' . mysqli_error($con));
   }

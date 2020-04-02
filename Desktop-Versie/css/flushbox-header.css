@@ -108,7 +108,8 @@ header nav ul li a {
     transition: 0.5s;
   }
   header nav.active {
-    left: 0;
+    left: -67px;
+    width: 219px;
   }
   header nav ul {
     display: block;

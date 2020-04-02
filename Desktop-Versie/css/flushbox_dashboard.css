@@ -51,6 +51,7 @@ input[type="file"] {
 }
 .activeSet {
   background-color: #FF4500;
+  width: 104px;
 }
 
 input[type="text"], input[type="password"] {
@@ -112,4 +113,12 @@ input[type="submit"]:hover {
 .rubberBand {
   -webkit-animation-name: rubberBand;
   animation-name: rubberBand;
+}
+
+@media (max-width: 1286px) {
+
+  .main-content {
+    width: 80%;
+  }
+
 }

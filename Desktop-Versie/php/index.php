@@ -62,25 +62,23 @@ include("logIp.php");
     color: red;">Hottest drops!!</p>
         </li>
         <li>
-          <img src="../images/917FhHgNDHL._AC_SX522_.jpg" height="300px">
-            <p style="font-size: 200%;
-    font-family: sans-serif;
-    margin: 0;
-    font-weight: bolder;">Joji</p>
-    <p> IN TONGUES [EP]</p>
+          <img id="side_images" src="../images/917FhHgNDHL._AC_SX522_.jpg" >
+            <p id="side_text">Joji</p>
+    <p>IN TONGUES [EP]</p>
         </li>
         <li>
-          <img src="../images/4lehuzmxu53.jfif" height="300px">
-            <p style="font-size: 200%;
-    font-family: sans-serif;
-    margin: 0;
-    font-weight: bolder;">XXXTENTACTION</p>
+          <img id="side_images" src="../images/4lehuzmxu53.jfif">
+            <p id="side_text">XXXTENTACTION</p>
     <p> BAD VIBES FOR EVER</p>
         </li>
 </nav>
 
     <main>
-      <div id="txtHint"></div>
+    <h1 style="    text-align: center;
+    color: white;">Vibe of today</h1>
+    <hr>
+      <div id="txtHint">
+      </div>
     </main>
     <button onclick="topFunction()" id="goUp" class="goUp hvr-pulse-grow" style="font-family:'Montserrat', sans-serif, FontAwesome">&#xF062;</button>
     <script src="../javascript/ajax.js"></script>

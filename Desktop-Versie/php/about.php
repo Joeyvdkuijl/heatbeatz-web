@@ -92,7 +92,7 @@ include("logIp.php");
 </main>
   <footer>
     <div class="inhoudContent">
-      <span class="copyright"> UNKN0WNSKULLS &copy; 2019 FlushBox.net All rights reserved</span>
+      <span class="copyright"> JoeyvdKuijl &copy; 2020 HeatBeatz All rights</span>
     </div>
   </footer>
   <script src="//code.jquery.com/jquery-3.3.1.js"></script>

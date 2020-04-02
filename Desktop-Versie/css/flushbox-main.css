@@ -8,6 +8,10 @@ main {
   margin-left: 19.6%;
   padding: 10px;
 }
+hr{
+  width: 75%;
+  margin-top: 2%;
+}
 #txtHint {
   color: white;
   width: 67%;
@@ -30,6 +34,15 @@ main {
 #txtHint img:hover {
   transform: scale(1.1);
   box-shadow: 0.5em 0.5em 2em rgba(0, 0, 0, 0.7);
+}
+#side_images{
+  height: 300px;
+}
+#side_text{
+    font-size: 200%;
+    font-family: sans-serif;
+    margin: 0;
+    font-weight: bolder;
 }
 .addImage {
   width: 70px;
@@ -114,7 +127,7 @@ main {
   max-width: 80%;
   padding: 2em;
   border-radius: 5px;
-  border: 2.5px solid #FF4500;
+  border: 2.5px solid red;
   box-shadow: 0 0 5px 0 #FF4500;
   background-color: black;
   max-height: 90vh;
@@ -142,7 +155,8 @@ main {
   font-size: 2em;
   font-weight: 900;
   border: 0;
-  background-color: #fff;
+  background-color: red;
+  border-radius: 50%;
   outline: none;
   cursor: pointer;
 }
@@ -275,10 +289,10 @@ input[type="file"] {
 }
 .modaal article {
   font-size: 18px;
-  color: gray;
+  color: white;
 }
 .modaal article .bold {
-  color: white;
+  color: red;
   font-weight: bold;
   font-size: 20px;
   padding-bottom: 5px;
@@ -301,7 +315,7 @@ input[type="submit"] {
   font-size: 16px;
   box-shadow: rgba(255, 255, 255, 0.24) 0 2px 0 0 inset, #fff 0 1px 0 0;
   border: 1px solid #FF4500;
-  border-radius: 2px;
+  border-radius: 10px;
   cursor: pointer;
   animation-duration: 1s;
   animation-fill-mode: both;
@@ -340,4 +354,14 @@ input[type="submit"]:hover {
 }
 .activeSet {
   background-color: #FF4500;
+  width: 100px;
+}
+@media (max-width: 1686px) {
+
+  #side_images{
+    height: 150px;
+  }
+  #side_text{
+    font-size: 100%;
+  }
 }
